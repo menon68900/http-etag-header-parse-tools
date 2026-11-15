@@ -1,0 +1,17 @@
+{
+  "name": "http-etag-header-parse-tools",
+  "version": "0.1.0",
+  "description": "Parses HTTP entity-tags and checks If-Match and If-None-Match conditions.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {}
+}
