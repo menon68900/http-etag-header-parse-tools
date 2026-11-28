@@ -29,3 +29,10 @@ The trade-off: `parseETag` rejects any string that is not exactly one entity-tag
 ## Edge case
 
 `parseETag` rejects non-ASCII bytes inside the opaque value. RFC 7232 allows `obs-text` in the ABNF, but a raw byte above `0x7e` is not valid in an HTTP/1.1 header field value without encoding, so accepting it would make this parser more permissive than the transport that produced the header. Callers that need to round-trip arbitrary bytes should encode them before building the tag.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
